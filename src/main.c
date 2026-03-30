@@ -4,7 +4,6 @@
 #include "trie.h"
 #include "suffix_tree.h"
 #include "skiplist.h"
-#include "hashtable.h"
 
 #define MAX_SEQ 1000
 #define MAX_DATASET 100
@@ -53,17 +52,6 @@ void load_and_store(const char* filename) {
 
         // Insert into Trie
         insert_sequence(trie_root, line);
-
-        // EXTRA: Hash k-mers (size 5) for fast filtering
-        int len = strlen(line);
-        if (len >= 5) {
-            for (int i = 0; i <= len - 5; i++) {
-                char kmer[6];
-                strncpy(kmer, &line[i], 5);
-                kmer[5] = '\0';
-                insert_kmer(kmer);
-            }
-        }
     }
 
     fclose(file);
@@ -104,8 +92,6 @@ int main() {
 
                 if (trie_root) free_trie(trie_root);
                 trie_root = create_trie();
-                
-                free_table(); // 🔥 Reset hash table
 
                 load_and_store("data/human.txt");
                 load_and_store("data/chimpanzee.txt");
@@ -135,8 +121,6 @@ int main() {
 
             case 4:
                 printf("Exiting...\n");
-                if (trie_root) free_trie(trie_root);
-                free_table();
                 return 0;
 
             case 5:
@@ -158,20 +142,8 @@ int main() {
                     break;
                 }
 
-                // SPEED-UP WITH HASH TABLE
-                if (strlen(query) >= 5) {
-                    char kmer[6];
-                    strncpy(kmer, query, 5);
-                    kmer[5] = '\0';
-
-                    if (!search_kmer(kmer)) {
-                        printf("Fast Filter: Pattern definitely NOT in dataset.\n");
-                        break;
-                    }
-                    printf("Fast Filter: Candidate matches found, starting deep search...\n");
-                }
-
                 int found = 0;
+
                 printf("Searching pattern across dataset...\n");
 
                 for (int i = 0; i < dataset_size; i++) {
@@ -221,7 +193,3 @@ int main() {
             default:
                 printf("Invalid choice.\n");
         }
-    }
-
-    return 0;
-}
