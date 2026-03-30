@@ -56,8 +56,6 @@ void build_suffix_tree(const char* text) {
     for (int i = 0; i < n; i++) {
         insert_suffix(text, i);
     }
-
-    printf("Suffix Tree built successfully.\n");
 }
 
 // Search for pattern

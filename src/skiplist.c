@@ -8,26 +8,28 @@
 
 typedef struct Node {
     char *sequence;
-    int score; //percentage score
+    char *species;   // 🔥 ADD THIS
+    int score;
     struct Node *forward[MAX];
 } Node;
 
 static struct Node *header = NULL;
 
 //create node 
-struct Node* createNode(const char *seq, int score)
+struct Node* createNode(const char *seq, const char* species, int score)
 {
     struct Node *p = (struct Node *)malloc(sizeof(struct Node));
 
     p->sequence = (char *)malloc(strlen(seq) + 1);
     strcpy(p->sequence, seq);
 
+    p->species = (char *)malloc(strlen(species) + 1);
+    strcpy(p->species, species);
+
     p->score = score;
 
     for (int i = 0; i < MAX; i++)
-    {
         p->forward[i] = NULL;
-    }
 
     return p;
 }
@@ -47,12 +49,12 @@ int randlevel()
 //initialize skip list 
 void init_skiplist()
 {
-    header = createNode("", -1);
+    header = createNode("", "", -1);  // 🔥 empty sequence + empty species
     srand(time(NULL));
 }
 
 //insert function (DESCENDING ORDER based on score) 
-void insert_skiplist(const char *seq, int score)
+void insert_skiplist(const char *seq, const char *species, int score)
 {
     if (header == NULL)
         init_skiplist();
@@ -73,7 +75,7 @@ void insert_skiplist(const char *seq, int score)
 
     x = x->forward[0];
 
-    struct Node *nn = createNode(seq, score);
+    struct Node *nn = createNode(seq, species, score);
     int level = randlevel();
 
     for (int i = 0; i < level; i++)
@@ -99,10 +101,11 @@ void display_top_matches(int k)
 
     while (x != NULL && count < k)
     {
-        printf("%d. Score: %d%% | Sequence: %.50s...\n",
-               count + 1,
-               x->score,
-               x->sequence);
+        printf("%d. [%s] Score: %d%%\n   Sequence: %.50s...\n",
+            count + 1,
+            x->species,
+            x->score,
+            x->sequence);
 
         x = x->forward[0];
         count++;
@@ -152,6 +155,7 @@ void free_skiplist()
         current = current->forward[0];
 
         free(temp->sequence);
+        free(temp->species);   // 🔥 ADD THIS
         free(temp);
     }
 

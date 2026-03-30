@@ -12,22 +12,27 @@ TrieNode* trie_root = NULL;
 
 // Store dataset in memory
 char dataset[MAX_DATASET][MAX_SEQ];
+char species[MAX_DATASET][50];
+char labels[MAX_DATASET][50];
 int dataset_size = 0;
 
 void show_menu() {
-    printf("\n==== DNA Matching System ====\n");
-    printf("1. Load Sample Data\n");
-    printf("2. Enter Query DNA Sequence\n");
+    printf("\n========================================\n");
+    printf("        🧬 DNA MATCHING SYSTEM\n");
+    printf("========================================\n");
+    printf("1. Load DNA Dataset\n");
+    printf("2. Enter DNA Query\n");
     printf("3. Validate Query\n");
     printf("4. Exit\n");
-    printf("5. Search Exact Match (Trie)\n");
-    printf("6. Search Pattern (Suffix Tree)\n");
-    printf("7. Rank Matches (Skip List)\n");
-    printf("Choose an option: ");
+    printf("5. Exact Match (Trie)\n");
+    printf("6. Pattern Search (Suffix Tree)\n");
+    printf("7. Rank & Analyze Matches\n");
+    printf("========================================\n");
+    printf("Enter choice: ");
 }
 
 // Load file and store sequences
-void load_and_store(const char* filename) {
+void load_and_store(const char* filename, const char* species_name) {
     FILE* file = fopen(filename, "r");
     if (!file) {
         printf("Error opening %s\n", filename);
@@ -35,42 +40,53 @@ void load_and_store(const char* filename) {
     }
 
     char line[MAX_SEQ];
+    char current_label[50];
 
     while (fgets(line, sizeof(line), file)) {
         line[strcspn(line, "\n")] = 0;
 
-        // Skip labels
-        if (line[0] == '>') continue;
+        if (line[0] == '>') {
+            strcpy(current_label, line + 1); // remove '>'
+            continue;
+        }
 
         normalize_sequence(line);
-
         if (!validate_sequence(line)) continue;
 
-        // Store in dataset
         strcpy(dataset[dataset_size], line);
-        dataset_size++;
+        strcpy(species[dataset_size], species_name);
+        strcpy(labels[dataset_size], current_label);
 
-        // Insert into Trie
         insert_sequence(trie_root, line);
+
+        dataset_size++;
     }
 
     fclose(file);
 }
 
 int calculate_similarity(const char* seq, const char* query) {
-    
-    int match = 0;
     int len1 = strlen(seq);
     int len2 = strlen(query);
-    int min = len1 < len2 ? len1 : len2;
-    if (min == 0) return 0;
 
-    for (int i = 0; i < min; i++) {
-        if (seq[i] == query[i]) {
-            match++;
+    int max_match = 0;
+
+    // Slide query across sequence
+    for (int i = 0; i <= len1 - len2; i++) {
+        int match = 0;
+
+        for (int j = 0; j < len2; j++) {
+            if (seq[i + j] == query[j]) {
+                match++;
+            }
+        }
+
+        if (match > max_match) {
+            max_match = match;
         }
     }
-    return (match * 100) / min; // percentage
+
+    return (max_match * 100) / len2;
 }
 
 int main() {
@@ -93,11 +109,11 @@ int main() {
                 if (trie_root) free_trie(trie_root);
                 trie_root = create_trie();
 
-                load_and_store("data/human.txt");
-                load_and_store("data/chimpanzee.txt");
-                load_and_store("data/mouse.txt");
-                load_and_store("data/virus_strain_a.txt");
-                load_and_store("data/virus_strain_b.txt");
+                load_and_store("data/human.txt", "Human");
+                load_and_store("data/chimpanzee.txt", "Chimpanzee");
+                load_and_store("data/mouse.txt", "Mouse");
+                load_and_store("data/virus_strain_a.txt", "Virus A");
+                load_and_store("data/virus_strain_b.txt", "Virus B");
 
                 printf("Dataset loaded: %d sequences\n", dataset_size);
                 break;
@@ -150,7 +166,9 @@ int main() {
                     build_suffix_tree(dataset[i]);
 
                     if (search_pattern(query)) {
-                        printf("Pattern found in sequence %d\n", i + 1);
+                        printf("✔ Pattern found in: %s (%s)\n",
+                            species[i],
+                            labels[i]);
                         found = 1;
                     }
 
@@ -165,29 +183,48 @@ int main() {
             }
             case 7: {
                 if (dataset_size == 0) {
-                    printf("Load dataset first.\n");
+                    printf("⚠️ Load dataset first.\n");
                     break;
                 }
 
                 if (!validate_sequence(query)) {
-                    printf("Enter a valid query first.\n");
+                    printf("⚠️ Enter a valid query first.\n");
                     break;
                 }
-                
-                // Clear previous skip list
+
                 free_skiplist();
-                init_skiplist();   // 🔥 MUST
-                printf("Calculating similarity scores...\n");
+                init_skiplist();
+
+                printf("\n🔬 Analyzing DNA Sequence...\n");
+                printf("----------------------------------------\n");
+
+                int best_score = 0;
+                char best_species[50];
+                strcpy(best_species, "None");
 
                 for (int i = 0; i < dataset_size; i++) {
-                    if (strlen(dataset[i]) == 0) continue;
+
                     int score = calculate_similarity(dataset[i], query);
-                    printf("Seq %d Score: %d\n", i, score);  // debug
+
                     if (score > 0) {
-                        insert_skiplist(dataset[i], score);
+                        insert_skiplist(dataset[i], species[i], score);                    
+                    }
+
+                    if (score > best_score) {
+                        best_score = score;
+                        strcpy(best_species, species[i]);
                     }
                 }
-                display_top_matches(5); // Top 5 matches
+
+                printf("\n🧬 BEST MATCH\n");
+                printf("----------------------------------------\n");
+                printf("Species: %s\n", best_species);
+                printf("Similarity: %d%%\n", best_score);
+
+                printf("\n🏆 TOP MATCHES\n");
+                printf("----------------------------------------\n");
+                display_top_matches(5);
+
                 break;
             }
             default:

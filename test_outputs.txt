@@ -1,0 +1,701 @@
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 1                     
+
+Loading dataset...
+Dataset loaded: 55 sequences
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: ATGCTAGC
+Normalized Query: ATGCTAGC
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 3
+Valid DNA sequence.
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 5
+Exact sequence NOT found.
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 6
+Searching pattern across dataset...
+Γ£ö Pattern found in: Human (Human_1)
+Γ£ö Pattern found in: Human (Human_2)
+Γ£ö Pattern found in: Human (Chimpanzee_1)
+Γ£ö Pattern found in: Human (Chimpanzee_2)
+Γ£ö Pattern found in: Chimpanzee (Chimp_1)
+Γ£ö Pattern found in: Chimpanzee (Chimp_2)
+Γ£ö Pattern found in: Chimpanzee (Chimp_3)
+Γ£ö Pattern found in: Chimpanzee (Chimp_4)
+Γ£ö Pattern found in: Chimpanzee (Chimp_5)
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 7
+
+≡ƒö¼ Analyzing DNA Sequence...
+----------------------------------------
+
+≡ƒº¼ BEST MATCH
+----------------------------------------
+Species: Human
+Similarity: 100%
+
+≡ƒÅå TOP MATCHES
+----------------------------------------
+
+Top 5 Matches:
+1. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+2. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+3. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+4. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+5. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: GCTAGC
+Normalized Query: GCTAGC
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 3
+Valid DNA sequence.
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 5
+Exact sequence NOT found.
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 6
+Searching pattern across dataset...
+Γ£ö Pattern found in: Human (Human_1)
+Γ£ö Pattern found in: Human (Human_2)
+Γ£ö Pattern found in: Human (Chimpanzee_1)
+Γ£ö Pattern found in: Human (Chimpanzee_2)
+Γ£ö Pattern found in: Human (Mouse_1)
+Γ£ö Pattern found in: Human (Mouse_2)
+Γ£ö Pattern found in: Human (Virus_Strain_A_1)
+Γ£ö Pattern found in: Human (Virus_Strain_A_2)
+Γ£ö Pattern found in: Human (Virus_Strain_B_1)
+Γ£ö Pattern found in: Human (Virus_Strain_B_2)
+Γ£ö Pattern found in: Chimpanzee (Chimp_1)
+Γ£ö Pattern found in: Chimpanzee (Chimp_2)
+Γ£ö Pattern found in: Chimpanzee (Chimp_3)
+Γ£ö Pattern found in: Chimpanzee (Chimp_4)
+Γ£ö Pattern found in: Chimpanzee (Chimp_5)
+Γ£ö Pattern found in: Mouse (Mouse_1)
+Γ£ö Pattern found in: Mouse (Mouse_2)
+Γ£ö Pattern found in: Mouse (Mouse_3)
+Γ£ö Pattern found in: Mouse (Mouse_4)
+Γ£ö Pattern found in: Mouse (Mouse_5)
+Γ£ö Pattern found in: Virus A (VirusA_1)
+Γ£ö Pattern found in: Virus A (VirusA_2)
+Γ£ö Pattern found in: Virus A (VirusA_3)
+Γ£ö Pattern found in: Virus A (VirusA_4)
+Γ£ö Pattern found in: Virus A (VirusA_5)
+Γ£ö Pattern found in: Virus B (VirusB_1)
+Γ£ö Pattern found in: Virus B (VirusB_2)
+Γ£ö Pattern found in: Virus B (VirusB_3)
+Γ£ö Pattern found in: Virus B (VirusB_4)
+Γ£ö Pattern found in: Virus B (VirusB_5)
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 7
+
+≡ƒö¼ Analyzing DNA Sequence...
+----------------------------------------
+
+≡ƒº¼ BEST MATCH
+----------------------------------------
+Species: Human
+Similarity: 100%
+
+≡ƒÅå TOP MATCHES
+----------------------------------------
+
+Top 5 Matches:
+1. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+2. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+3. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+4. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+5. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: ATGTTTACG
+Normalized Query: ATGTTTACG
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 3
+Valid DNA sequence.
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 6
+Searching pattern across dataset...
+Γ£ö Pattern found in: Human (Virus_Strain_A_1)
+Γ£ö Pattern found in: Human (Virus_Strain_A_2)
+Γ£ö Pattern found in: Human (Virus_Strain_B_1)
+Γ£ö Pattern found in: Human (Virus_Strain_B_2)
+Γ£ö Pattern found in: Virus A (VirusA_1)
+Γ£ö Pattern found in: Virus A (VirusA_2)
+Γ£ö Pattern found in: Virus A (VirusA_3)
+Γ£ö Pattern found in: Virus A (VirusA_4)
+Γ£ö Pattern found in: Virus A (VirusA_5)
+Γ£ö Pattern found in: Virus B (VirusB_1)
+Γ£ö Pattern found in: Virus B (VirusB_2)
+Γ£ö Pattern found in: Virus B (VirusB_3)
+Γ£ö Pattern found in: Virus B (VirusB_4)
+Γ£ö Pattern found in: Virus B (VirusB_5)
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 7
+
+≡ƒö¼ Analyzing DNA Sequence...
+----------------------------------------
+
+≡ƒº¼ BEST MATCH
+----------------------------------------
+Species: Human
+Similarity: 100%
+
+≡ƒÅå TOP MATCHES
+----------------------------------------
+
+Top 5 Matches:
+1. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+2. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+3. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+4. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+5. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: ATXG123
+Normalized Query: ATXG123
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 3 
+Invalid DNA sequence.
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: TTTTTTTT
+Normalized Query: TTTTTTTT
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 3
+Valid DNA sequence.
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 6
+Searching pattern across dataset...
+Pattern NOT found in dataset.
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 7
+
+≡ƒö¼ Analyzing DNA Sequence...
+----------------------------------------
+
+≡ƒº¼ BEST MATCH
+----------------------------------------
+Species: Human
+Similarity: 62%
+
+≡ƒÅå TOP MATCHES
+----------------------------------------
+
+Top 5 Matches:
+1. [Virus B] Score: 62%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+2. [Virus B] Score: 62%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+3. [Virus B] Score: 62%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+4. [Virus B] Score: 62%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+5. [Virus B] Score: 62%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 1
+
+Loading dataset...
+Dataset loaded: 55 sequences
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: ATGCTAGC
+Normalized Query: ATGCTAGC
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 7
+
+≡ƒö¼ Analyzing DNA Sequence...
+----------------------------------------
+
+≡ƒº¼ BEST MATCH
+----------------------------------------
+Species: Human
+Similarity: 100%
+
+≡ƒÅå TOP MATCHES
+----------------------------------------
+
+Top 5 Matches:
+1. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+2. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+3. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+4. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+5. [Chimpanzee] Score: 100%
+   Sequence: ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCT...
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: ATGTTTACG
+Normalized Query: ATGTTTACG
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 7
+
+≡ƒö¼ Analyzing DNA Sequence...
+----------------------------------------
+
+≡ƒº¼ BEST MATCH
+----------------------------------------
+Species: Human
+Similarity: 100%
+
+≡ƒÅå TOP MATCHES
+----------------------------------------
+
+Top 5 Matches:
+1. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+2. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+3. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+4. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+5. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: GCTAGC
+Normalized Query: GCTAGC
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 7
+
+≡ƒö¼ Analyzing DNA Sequence...
+----------------------------------------
+
+≡ƒº¼ BEST MATCH
+----------------------------------------
+Species: Human
+Similarity: 100%
+
+≡ƒÅå TOP MATCHES
+----------------------------------------
+
+Top 5 Matches:
+1. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+2. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+3. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+4. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+5. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 1
+
+Loading dataset...
+Dataset loaded: 55 sequences
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 2
+
+Enter DNA query: ATGTTTACG
+Normalized Query: ATGTTTACG
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 7
+
+≡ƒö¼ Analyzing DNA Sequence...
+----------------------------------------
+
+≡ƒº¼ BEST MATCH
+----------------------------------------
+Species: Human
+Similarity: 100%
+
+≡ƒÅå TOP MATCHES
+----------------------------------------
+
+Top 5 Matches:
+1. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+2. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+3. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+4. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+5. [Virus B] Score: 100%
+   Sequence: ATGTTTACGATCGATCGATCTAGCTAGCTAGCTAGCTAGCTAGCTAATGT...
+
+========================================
+        ≡ƒº¼ DNA MATCHING SYSTEM
+========================================
+1. Load DNA Dataset
+2. Enter DNA Query
+3. Validate Query
+4. Exit
+5. Exact Match (Trie)
+6. Pattern Search (Suffix Tree)
+7. Rank & Analyze Matches
+========================================
+Enter choice: 4
+Exiting...

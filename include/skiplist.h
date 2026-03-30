@@ -7,7 +7,7 @@ typedef struct SkipNode {
     struct SkipNode** forward;
 } SkipNode;
 
-void insert_skiplist(const char* seq, int score);
+void insert_skiplist(const char *seq, const char *species, int score);
 void display_top_matches(int k);
 void free_skiplist();
 void init_skiplist();
