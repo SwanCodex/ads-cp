@@ -1,212 +1,89 @@
-# 🧬 DNA Sequence Matching System (C Project)
+# 🧬 DNA Analysis System (C Project)
 
-## 📌 Overview
-This project is a DNA sequence analysis system built purely in C. It supports:
-- Fast DNA sequence searching
-- Mutation detection
-- Sequence alignment
-- Similarity scoring
-- Multi-species comparison
-
-The system uses advanced data structures:
-- Suffix Tree
-- Trie
-- Hash Table
-- Needleman-Wunsch Algorithm
-- Skip List
-
----
-
-# 📂 Project Structure
-
-/src        → Implementation files  
-/include    → Header files (interfaces)  
-/data       → DNA datasets  
-
----
-
-# ⚙️ SYSTEM FLOW
-
-1. Load DNA sequences from file  
-2. Store sequences using Trie  
-3. Build Suffix Tree for fast search  
-4. Use Hash Table for quick filtering  
-5. Perform alignment using Needleman-Wunsch  
-6. Rank results using Skip List  
-
----
-
-# 👥 TEAM RESPONSIBILITIES (VERY IMPORTANT)
-
-Each member must implement ONE module.
-
----
-
-## 🌲 MEMBER 1 — SUFFIX TREE
-
-### 📄 File:
-`src/suffix_tree.c`
-
-### 🔗 Connected in:
-- Called after loading data
-- Used in search queries
-
-### 🎯 Responsibilities:
-- Build suffix tree for a DNA sequence
-- Implement fast pattern search
-
-### 🧠 Functions to implement:
-- `build_suffix_tree(const char* text)`
-  → Build tree from DNA sequence
-
-- `search_pattern(const char* pattern)`
-  → Return 1 if found, else 0
-
-- `free_suffix_tree()`
-  → Free memory
-
-### 🚀 Feature:
-- Exact DNA matching
-- Pattern detection
-
----
-
-## 🌳 MEMBER 2 — TRIE
-
-### 📄 File:
-`src/trie.c`
-
-### 🔗 Connected in:
-- Used while loading dataset
-
-### 🎯 Responsibilities:
-- Store multiple DNA sequences
-- Allow prefix-based search
-
-### 🧠 Functions:
-- `create_trie()`
-- `insert_sequence(root, seq)`
-  → Insert each DNA sequence
-
-- `search_sequence(root, seq)`
-  → Check if sequence exists
-
-- `free_trie(root)`
-
-### 🚀 Feature:
-- Multi-sequence storage
-- Species-level grouping
-
----
-
-## 🧩 MEMBER 3 — HASH TABLE
-
-### 📄 File:
-`src/hashtable.c`
-
-### 🔗 Connected in:
-- Used before suffix tree search
-
-### 🎯 Responsibilities:
-- Store k-mers (substrings of DNA)
-- Provide fast lookup
-
-### 🧠 Functions:
-- `insert_kmer(kmer)`
-  → Store substring
-
-- `search_kmer(kmer)`
-  → Return existence
-
-- `free_table()`
-
-### 🚀 Feature:
-- Fast filtering of candidate matches
-
----
-
-## 🧮 MEMBER 4 — NEEDLEMAN-WUNSCH
-
-### 📄 File:
-`src/alignment.c`
-
-### 🔗 Connected in:
-- Used after search (when exact match fails)
-
-### 🎯 Responsibilities:
-- Compare two DNA sequences
-- Return similarity score
-- Print alignment
-
-### 🧠 Functions:
-- `needleman_wunsch(seq1, seq2)`
-  → Return similarity score
-
-- `print_alignment(seq1, seq2)`
-  → Show aligned sequences
-
-### 🚀 Feature:
-- Mutation detection
-- Similarity analysis
-
----
-
-## 🪜 MEMBER 5 — SKIP LIST
-
-### 📄 File:
-`src/skiplist.c`
-
-### 🔗 Connected in:
-- Used after alignment
-
-### 🎯 Responsibilities:
-- Store results sorted by score
-- Return top matches
-
-### 🧠 Functions:
-- `insert_skiplist(seq, score)`
-- `display_top_matches(k)`
-- `free_skiplist()`
-
-### 🚀 Feature:
-- Ranking best DNA matches
-
----
-
-# 🧪 UTILITIES (ALREADY IMPLEMENTED)
-
-## 📄 utils.c
-
-### Functions:
-- `validate_sequence(seq)`
-  → Checks if sequence contains only A, T, C, G
-
-- `normalize_sequence(seq)`
-  → Converts to uppercase
-
-- `load_sample_data(file)`
-  → Loads dataset
-
----
-
-# 🧪 EXPECTED FINAL FEATURES
-
-- Exact DNA search  
-- Approximate matching  
-- Mutation detection  
-- Similarity scoring  
-- Multi-species comparison  
-- Top-K best matches  
-
----
-
-# 🚀 HOW TO RUN
+## 🚀 How to Run
 
 ```bash
-gcc src/*.c -Iinclude -o dna_app
-./dna_app 
+gcc *.c -o dna_app
+./dna_app
 ```
-OR
-```
-dna_app
-```
+
+## 📌 Overview
+
+This project is a **DNA analysis system** focused on real-world biological insights rather than simple sequence matching.
+
+It answers key questions such as:
+- Which species does this DNA belong to?
+- What mutations are present?
+- Is the sequence viral or normal?
+- What is the closest known gene?
+
+---
+
+## 🧠 Core Features
+
+### 🔍 1. Species Identification
+- Determines most likely organism (Human / Virus / Mouse / Chimpanzee)
+- Based on global alignment scoring
+
+---
+
+### 🧬 2. Mutation Detection
+- Detects base-level mutations
+- Reports:
+  - Position
+  - Original base → mutated base
+  - Total mutation count
+
+---
+
+### ⚠️ 3. Disease / Viral Detection
+- Identifies whether sequence resembles viral DNA
+- Flags potential abnormal sequences
+
+---
+
+### 📊 4. Top Match Ranking
+- Uses Skip List to rank best matches
+- Displays top 3 closest sequences
+
+---
+
+### 🧪 5. Alignment Visualization
+- Uses Needleman-Wunsch algorithm
+- Shows:
+  - Matches (|)
+  - Mismatches (*)
+  - Gaps
+
+---
+
+### ⚡ 6. Fast Filtering (K-mer Hashing)
+- Eliminates unrelated sequences early
+- Improves performance significantly
+
+---
+
+## 🧱 Data Structures Used
+
+| Structure        | Role |
+|----------------|------|
+| Trie           | Stores DNA sequences |
+| Hash Table     | K-mer filtering |
+| Suffix Tree    | Pattern detection |
+| Skip List      | Ranking results |
+| DP Matrix      | Alignment (Needleman-Wunsch) |
+
+---
+
+## 🔬 Workflow
+
+1. Load dataset (multi-species DNA)
+2. Input query DNA
+3. Filter using k-mers
+4. Perform alignment
+5. Identify species
+6. Detect mutations
+7. Rank top matches
+8. Display alignment
+
+---
