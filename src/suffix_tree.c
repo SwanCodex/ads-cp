@@ -3,7 +3,6 @@
 #include <string.h>
 #include "suffix_tree.h"
 
-// Map DNA char → index
 int get_index(char c) {
     switch (c) {
         case 'A': return 0;
@@ -14,7 +13,6 @@ int get_index(char c) {
     }
 }
 
-// Create new node
 SuffixTreeNode* create_node() {
     SuffixTreeNode* node = (SuffixTreeNode*)malloc(sizeof(SuffixTreeNode));
     for (int i = 0; i < 4; i++) {
@@ -25,10 +23,8 @@ SuffixTreeNode* create_node() {
     return node;
 }
 
-// Root of suffix tree
 SuffixTreeNode* root = NULL;
 
-// Insert a suffix into the tree
 void insert_suffix(const char* text, int start_index) {
     SuffixTreeNode* current = root;
 
@@ -44,7 +40,6 @@ void insert_suffix(const char* text, int start_index) {
     }
 }
 
-// Build suffix tree (naive O(n²))
 void build_suffix_tree(const char* text) {
     if (root != NULL) {
         free_suffix_tree();
@@ -58,7 +53,6 @@ void build_suffix_tree(const char* text) {
     }
 }
 
-// Search for pattern
 int search_pattern(const char* pattern) {
     if (root == NULL) {
         printf("Suffix Tree not built.\n");
@@ -72,16 +66,15 @@ int search_pattern(const char* pattern) {
         if (idx == -1) return 0;
 
         if (current->children[idx] == NULL) {
-            return 0; // Not found
+            return 0;
         }
 
         current = current->children[idx];
     }
 
-    return 1; // Found
+    return 1; 
 }
 
-// Free memory recursively
 void free_node(SuffixTreeNode* node) {
     if (node == NULL) return;
 
@@ -92,7 +85,6 @@ void free_node(SuffixTreeNode* node) {
     free(node);
 }
 
-// Free entire tree
 void free_suffix_tree() {
     free_node(root);
     root = NULL;

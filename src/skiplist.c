@@ -8,7 +8,7 @@
 
 typedef struct Node {
     char *sequence;
-    char *species;   // 🔥 ADD THIS
+    char *species;  
     int score;
     struct Node *forward[MAX];
 } Node;
@@ -49,7 +49,7 @@ int randlevel()
 //initialize skip list 
 void init_skiplist()
 {
-    header = createNode("", "", -1);  // 🔥 empty sequence + empty species
+    header = createNode("", "", -1); 
     srand(time(NULL));
 }
 
@@ -155,7 +155,7 @@ void free_skiplist()
         current = current->forward[0];
 
         free(temp->sequence);
-        free(temp->species);   // 🔥 ADD THIS
+        free(temp->species);
         free(temp);
     }
 

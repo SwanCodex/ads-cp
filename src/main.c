@@ -16,18 +16,15 @@
 
 TrieNode* trie_root = NULL;
 
-/* ================= DATA ================= */
 char dataset[MAX_DATASET][MAX_SEQ];
 char species[MAX_DATASET][50];
 char labels[MAX_DATASET][50];
 int dataset_size = 0;
 
-/* ================= DISEASE DB ================= */
 char disease_seq[MAX_DISEASE][MAX_SEQ];
 char disease_name[MAX_DISEASE][50];
 int disease_count = 0;
 
-/* ================= LOAD DATASET ================= */
 void load_and_store(const char* filename, const char* species_name) {
     FILE* file = fopen(filename, "r");
     if (!file) return;
@@ -139,9 +136,9 @@ int find_best_species(const char* query) {
         printf("Score  : %d\n", best_score);
 
         if (strstr(species[best_index], "Virus"))
-            printf("⚠️ Possible viral sequence detected.\n");
+            printf("Possible viral sequence detected.\n");
         else
-            printf("✅ Likely normal organism DNA.\n");
+            printf("Likely normal organism DNA.\n");
     }
 
     return best_index;
@@ -195,11 +192,11 @@ void analyze_disease_risk(const char* query) {
     printf("Risk Score: %d%%\n", risk);
 
     if (risk > 80)
-        printf("⚠️ HIGH RISK\n");
+        printf("HIGH RISK\n");
     else if (risk > 50)
-        printf("⚠️ MODERATE RISK\n");
+        printf("MODERATE RISK\n");
     else
-        printf("✅ LOW RISK\n");
+        printf("LOW RISK\n");
 }
 
 /* ================= MAIN ================= */

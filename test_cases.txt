@@ -1,173 +1,168 @@
 ==============================
-DNA MATCHING SYSTEM - DEMO TESTS
-==============================
+DNA ANALYSIS SYSTEM - TEST CASES
+================================
 
 NOTE:
-- Enter inputs exactly as shown
-- Run step-by-step for best demo
 
---------------------------------
-TEST 1: Load Dataset
---------------------------------
+* Enter ONLY the DNA sequence when prompted
+* System automatically performs:
+  Species Detection + Mutation Analysis + Disease Risk
+
+---
+
+## TEST 1: Human Exact Match (HBB)
+
 Input:
-1
-
-Expected:
-Dataset loaded successfully
-
-
---------------------------------
-TEST 2: Exact Match (Trie)
---------------------------------
-Input:
-2
 ATGGTGCACCTGACTCCTGAGGAGAAGTCTGCCGTTACTGCCCTGTGGGGCAAGGTGAACGTGGATGAAGTTGGTGGTGAGGCCCTGGGCAG
-5
 
 Expected:
-Exact sequence FOUND in dataset.
+Species: Human
+Gene: Human_HBB_1
+Mutations: 0
+Disease Risk: LOW
 
+---
 
---------------------------------
-TEST 3: One Mutation (Alignment)
---------------------------------
+## TEST 2: Human Single Mutation
+
 Input:
-2
 ATGGTGCACCTGACTCCTGAGGAGAAGTCTGCCGTTACTGCCCTGTGGGGCAAGGTGAACGTGGATGAAGTTGGTGGTGAGGCCCTGGGCAA
-5
 
 Expected:
-Exact sequence NOT found
-Needleman-Wunsch alignment shown
-High score (~85–95)
-One mismatch visible
+Species: Human
+Mutations: 1
+Disease Risk: LOW
 
+---
 
---------------------------------
-TEST 4: Substring Search (Suffix Tree)
---------------------------------
+## TEST 3: Cancer Detection (TP53)
+
 Input:
-2
-CCTGAGGAGAAGTCTGCC
-6
-
-Expected:
-Pattern found in:
-Human (Human_HBB_1)
-
-
---------------------------------
-TEST 5: Ranking - TP53 Gene
---------------------------------
-Input:
-2
 ATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACA
-7
 
 Expected:
-Top match:
-Human (Human_TP53_1)
+Species: Human
+Gene: Human_TP53_1
+Disease Marker: CANCER_TP53
+Risk: HIGH
 
+---
 
---------------------------------
-TEST 6: Ranking - INS Gene
---------------------------------
+## TEST 4: Cancer with Mutation
+
 Input:
-2
+ATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACC
+
+Expected:
+Species: Human
+Disease Marker: CANCER_TP53
+Risk: HIGH (~90%)
+Mutations detected
+
+---
+
+## TEST 5: Diabetes Detection (INS)
+
+Input:
 ATGCCCTGTGGATGCGCTTCCTGCCCCTGCTGGCGCTGCTGGCGCTGCTGGCGCTGCTGGCGCTGCTGGCGCTGCTGGCGCTGCTGGC
-7
 
 Expected:
-Top match:
-Human (Human_INS_1)
+Species: Human
+Disease Marker: DIABETES_INS
+Risk: HIGH
 
+---
 
---------------------------------
-TEST 7: Partial Query (Hash + Alignment)
---------------------------------
+## TEST 6: Arthritis Detection (IL6)
+
 Input:
-2
+ATGAACTCCTTCTCCACAAGCGCCTTCGGTCCAGTTGCCTTCTTGGGACTGATGCTGGTGACAACCACGGCCTTCCCTACTTCACAAG
+
+Expected:
+Disease Marker: ARTHRITIS_IL6
+Risk: HIGH
+
+---
+
+## TEST 7: Chimpanzee Identification
+
+Input:
+ATGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTAGCTAGCTAGCTACGATCGATCGTTAGTAGCTAGCTAGCTAGGCTA
+
+Expected:
+Species: Chimpanzee
+Disease Risk: LOW
+
+---
+
+## TEST 8: Virus Detection
+
+Input:
+ATGTTTACGATCGATCGATTTAGCTAGCTAGCTAGCTAGCTAGCTAATGTTTACGATCGATCGATTTAGCTAGCTAGCTAGCTAGCTAGCTA
+
+Expected:
+Species: Virus A
+Warning: Viral sequence detected
+Disease Risk: LOW
+
+---
+
+## TEST 9: Partial Sequence
+
+Input:
 ATGCCACCCCTAACAGTTACATAGTTACATAAAGC
-7
 
 Expected:
-Top match:
-Human (Human_MTND1_1)
-Medium/High score
+Species: Human (likely MTND1)
+Medium score
+Mutation analysis present
 
+---
 
---------------------------------
-TEST 8: Invalid Input
---------------------------------
+## TEST 10: Random DNA (No Match)
+
 Input:
-2
-ATXG123
-3
+TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+
+Expected:
+No biological similarity OR very low score
+Disease Risk: LOW
+
+---
+
+## TEST 11: Short Sequence (Edge Case)
+
+Input:
+ATG
+
+Expected:
+No crash
+Basic analysis still runs
+
+---
+
+## TEST 12: Invalid Input
+
+Input:
+ATGX123
 
 Expected:
 Invalid DNA sequence
 
+---
 
---------------------------------
-TEST 9: No Match Case
---------------------------------
+## FINAL DEMO (USE THIS)
+
 Input:
-2
-TTTTTTTTTTTT
-6
-7
+ATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACC
 
 Expected:
-Pattern NOT found
-No matches OR very low scores
+Species: Human
+Gene: TP53
+Disease: Cancer
+Risk: HIGH
+Mutation detected
 
+---
 
---------------------------------
-TEST 10: Short Query (Edge Case)
---------------------------------
-Input:
-2
-ATG
-7
-
-Expected:
-Hash filter skipped
-Results still shown
-
-
---------------------------------
-TEST 11: Stability Test (Multiple Queries)
---------------------------------
-Input:
-1
-2
-ATGGAGGAGCCG
-7
-2
-ATGCCCTGTGG
-7
-2
-ATGGTGCACC
-7
-
-Expected:
-No crashes
-Different results each time
-
-
---------------------------------
-FINAL DEMO (USE THIS)
---------------------------------
-Input:
-1
-2
-ATGGAGGAGCCGCAGTCAGATCCTAGCGTCGAGCCCCCTCTGAGTCAGGAAACATTTTCAGACCTATGGAAACTACTTCCTGAAAACA
-7
-
-Expected:
-Top match:
-Human (TP53 gene)
-
---------------------------------
-END OF TEST FILE
---------------------------------
+## END OF TEST FILE
