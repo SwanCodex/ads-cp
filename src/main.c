@@ -10,21 +10,24 @@
 #include "hashtable.h"
 
 #define MAX_SEQ 2000
-#define MAX_DATASET 100
+#define MAX_DATASET 200
 #define MAX_DISEASE 100
 #define KMER 4
 
 TrieNode* trie_root = NULL;
 
+/* ================= DATA ================= */
 char dataset[MAX_DATASET][MAX_SEQ];
 char species[MAX_DATASET][50];
 char labels[MAX_DATASET][50];
 int dataset_size = 0;
 
+/* ================= DISEASE DB ================= */
 char disease_seq[MAX_DISEASE][MAX_SEQ];
 char disease_name[MAX_DISEASE][50];
 int disease_count = 0;
 
+/* ================= LOAD DATASET ================= */
 void load_and_store(const char* filename, const char* species_name) {
     FILE* file = fopen(filename, "r");
     if (!file) return;
@@ -94,6 +97,18 @@ void load_disease_db(const char* filename) {
     fclose(file);
 }
 
+/* ================= SUFFIX TREE HELPER ================= */
+int suffix_tree_match(const char* sequence, const char* query) {
+    if (strlen(sequence) == 0 || strlen(query) == 0)
+        return 0;
+
+    build_suffix_tree(sequence);
+    int found = search_pattern(query);
+    free_suffix_tree();
+
+    return found;
+}
+
 /* ================= MUTATION DETECTION ================= */
 void detect_mutations(const char* ref, const char* query) {
     if (strlen(ref) == 0 || strlen(query) == 0) return;
@@ -115,13 +130,17 @@ void detect_mutations(const char* ref, const char* query) {
 
 /* ================= SPECIES IDENTIFICATION ================= */
 int find_best_species(const char* query) {
-    int best_score = -99999;
+    int best_score = -999999;
     int best_index = -1;
 
     for (int i = 0; i < dataset_size; i++) {
         if (strlen(dataset[i]) == 0) continue;
 
         int score = needleman_wunsch(dataset[i], query);
+
+        if (suffix_tree_match(dataset[i], query)) {
+            score += 20;
+        }
 
         if (score > best_score) {
             best_score = score;
@@ -146,19 +165,19 @@ int find_best_species(const char* query) {
 
 /* ================= DISEASE ANALYSIS ================= */
 void analyze_disease_risk(const char* query) {
-    int best_score = -99999;
+    double best_score = -9999;
     int best_index = -1;
 
     for (int i = 0; i < disease_count; i++) {
         if (strlen(disease_seq[i]) == 0) continue;
 
-        int score = needleman_wunsch(disease_seq[i], query);
+        int raw_score = needleman_wunsch(disease_seq[i], query);
 
         int len1 = strlen(disease_seq[i]);
         int len2 = strlen(query);
 
-        /* Normalize by average length */
-        double norm_score = (double)score / ((len1 + len2) / 2.0);
+        double norm_score = (double)raw_score / ((len1 + len2) / 2.0);
+
         if (norm_score > best_score) {
             best_score = norm_score;
             best_index = i;
@@ -170,30 +189,16 @@ void analyze_disease_risk(const char* query) {
     printf("\n=== Genetic Risk Analysis ===\n");
     printf("Closest Marker: %s\n", disease_name[best_index]);
 
-    int max_len = strlen(query);
-    int len = strlen(query);
+    int risk = (int)((best_score + 2) / 3 * 100);
 
-    /* Best possible score */
-    int max_score = len * 1;
-
-    /* Worst possible score */
-    int min_score = len * (-2);
-
-    /* Normalize */
-    double normalized = (double)(best_score - min_score) / (max_score - min_score);
-
-    /* Convert to percentage */
-    int risk = (int)(normalized * 100);
-
-    /* Clamp */
     if (risk < 0) risk = 0;
     if (risk > 100) risk = 100;
 
     printf("Risk Score: %d%%\n", risk);
 
-    if (risk > 80)
+    if (risk > 85)
         printf("HIGH RISK\n");
-    else if (risk > 50)
+    else if (risk > 60)
         printf("MODERATE RISK\n");
     else
         printf("LOW RISK\n");
@@ -220,13 +225,12 @@ int main() {
 
     /* INPUT */
     while (1) {
-        printf("\nEnter DNA sequence: (-1 to exit)");
-        
+        printf("\nEnter DNA sequence (-1 to exit): ");
         fgets(query, MAX_SEQ, stdin);
-        query[strcspn(query, "\n")] = 0;
         if(query[0] == '-'){
             break;
         }
+        query[strcspn(query, "\n")] = 0;
 
         normalize_sequence(query);
 
@@ -241,23 +245,38 @@ int main() {
         }
 
     /* HASH FILTER */
-    int possible = 1;
     if (strlen(query) >= KMER) {
         char kmer[KMER + 1];
         strncpy(kmer, query, KMER);
         kmer[KMER] = '\0';
 
         if (!search_kmer(kmer)) {
-            possible = 0;
+            printf("\nNo biological similarity found.\n");
+            return 0;
         }
     }
 
-    if (!possible) {
-        printf("\nNo biological similarity found.\n");
-        return 0;
+    printf("\n=== ANALYSIS RESULTS ===\n");
+
+    if (search_sequence(trie_root,query)){
+        printf("exact sequence found!!");
+    }
+    else{
+    /* SUFFIX TREE PATTERN DETECTION */
+    printf("\nPattern Detection (Suffix Tree):\n");
+    int any_pattern = 0;
+
+    for (int i = 0; i < dataset_size; i++) {
+        if (suffix_tree_match(dataset[i], query)) {
+            printf("Pattern found in: %s (%s)\n", species[i], labels[i]);
+            any_pattern = 1;
+        }
     }
 
-    printf("\n=== ANALYSIS RESULTS ===\n");
+    if (!any_pattern) {
+        printf("No pattern found.\n");
+    }
+}
 
     int best_index = find_best_species(query);
 
@@ -267,6 +286,11 @@ int main() {
         if (strlen(dataset[i]) == 0) continue;
 
         int score = needleman_wunsch(dataset[i], query);
+
+        if (suffix_tree_match(dataset[i], query)) {
+            score += 20;
+        }
+
         insert_skiplist(dataset[i], species[i], score);
     }
 
@@ -281,11 +305,13 @@ int main() {
     analyze_disease_risk(query);
 
     /* ALIGNMENT */
-    if (best_index != -1 && strlen(dataset[best_index]) > 0)
+    if (best_index != -1)
         print_alignment(dataset[best_index], query);
+}
+
 
     printf("\n=== END ===\n");
-}
+
 
     return 0;
 }
